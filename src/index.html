@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pomodoro Focus</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/task-form.css">
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+</head>
+<body>
+  <!-- Theme toggle -->
+  <button id="themeToggle" class="theme-toggle">
+    <span class="material-icons-round">dark_mode</span>
+  </button>
+
+  <div class="container">
+    <header>
+      <h1>Pomodoro Focus</h1>
+      <nav>
+        <button id="timerTabBtn" class="tab-btn active">
+          <span class="material-icons-round">timer</span> Timer
+        </button>
+        <button id="scheduleTabBtn" class="tab-btn">
+          <span class="material-icons-round">calendar_today</span> Schedule
+        </button>
+        <button id="settingsTabBtn" class="tab-btn">
+          <span class="material-icons-round">settings</span> Settings
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Timer Tab -->
+      <div id="timerTab" class="tab-content active">
+        <!-- Productivity Stats -->
+        <div class="productivity-stats">
+          <div class="stat-card">
+            <div id="sessionsCompletedValue" class="stat-value">0</div>
+            <div class="stat-label">Sessions</div>
+          </div>
+          <div class="stat-card">
+            <div id="focusTimeValue" class="stat-value">0h</div>
+            <div class="stat-label">Focus Time</div>
+          </div>
+          <div class="stat-card">
+            <div id="tasksCompletedValue" class="stat-value">0</div>
+            <div class="stat-label">Tasks</div>
+          </div>
+        </div>
+
+        <!-- Daily Progress -->
+        <div class="daily-progress">
+          <div id="progressBar" class="progress-bar" style="width: 0%;"></div>
+        </div>
+
+        <div class="timer-display">
+          <h2 id="taskName">Ready to focus</h2>
+          <div id="sessionType" class="session-indicator work">Work Session</div>
+          <div id="wellnessPrompt" class="wellness-prompt"></div>
+          
+          <!-- Circular Timer -->
+          <div class="timer-container">
+            <div class="timer-background"></div>
+            <div id="timerProgressCircle" class="timer-progress"></div>
+            <div class="timer-inner">
+              <div id="timerDisplay" class="timer work">25:00</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="timer-controls">
+          <button id="startBtn" class="btn primary">
+            <span class="material-icons-round">play_arrow</span> Start
+          </button>
+          <button id="pauseBtn" class="btn" disabled>
+            <span class="material-icons-round">pause</span> Pause
+          </button>
+          <button id="resetBtn" class="btn" disabled>
+            <span class="material-icons-round">replay</span> Reset
+          </button>
+          <button id="skipBtn" class="btn secondary">
+            <span class="material-icons-round">skip_next</span> Skip
+          </button>
+        </div>
+      </div>
+      
+      <!-- Schedule Tab -->
+      <div id="scheduleTab" class="tab-content">
+        <div class="schedule-header">
+          <h2>Daily Schedule</h2>
+          <div class="schedule-actions">
+            <button id="exportBtn" class="btn secondary">
+              <span class="material-icons-round">file_download</span> Export
+            </button>
+            <button id="importBtn" class="btn secondary">
+              <span class="material-icons-round">upload_file</span> Import
+            </button>
+            <button id="clearScheduleBtn" class="btn danger">
+              <span class="material-icons-round">delete</span> Clear All
+            </button>
+          </div>
+        </div>
+        
+        <!-- Add task form -->
+        <div class="task-form-container">
+          <div class="task-form">
+            <div class="start-time-container">
+              <label for="scheduleStartTime">Start Time:</label>
+              <input type="time" id="scheduleStartTime" value="09:00">
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group task-name-group">
+                <input type="text" id="taskNameInput" placeholder="Enter task name" required>
+              </div>
+              
+              <div class="form-group task-duration-group">
+                <input type="number" id="taskDurationInput" min="1" max="120" value="25" placeholder="Minutes">
+              </div>
+              
+              <div class="form-group task-priority-group">
+                <select id="taskPrioritySelect">
+                  <option value="high">High</option>
+                  <option value="medium" selected>Medium</option>
+                  <option value="low">Low</option>
+                </select>
+              </div>
+              
+              <button id="addTaskBtn" class="btn primary">
+                <span class="material-icons-round">add</span> Add Task
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div id="scheduleList" class="schedule-list">
+          <p class="empty-state">No tasks added yet. Add a task above or import a schedule.</p>
+        </div>
+      </div>
+      
+      <!-- Settings Tab -->
+      <div id="settingsTab" class="tab-content">
+        <div class="settings-form">
+          <h2>Timer Settings</h2>
+          
+          <div class="form-group">
+            <label for="workDuration">
+              <span class="material-icons-round">work</span> Default Work Duration (minutes):
+            </label>
+            <input type="number" id="workDuration" min="1" max="120" value="25">
+          </div>
+          
+          <div class="form-group">
+            <label for="breakDuration">
+              <span class="material-icons-round">coffee</span> Default Break Duration (minutes):
+            </label>
+            <input type="number" id="breakDuration" min="1" max="60" value="5">
+          </div>
+          
+          <div class="form-group">
+            <label for="longBreakDuration">
+              <span class="material-icons-round">local_cafe</span> Long Break Duration (minutes):
+            </label>
+            <input type="number" id="longBreakDuration" min="5" max="60" value="15">
+          </div>
+          
+          <div class="form-group">
+            <label for="longBreakInterval">
+              <span class="material-icons-round">repeat</span> Long Break After (sessions):
+            </label>
+            <input type="number" id="longBreakInterval" min="1" max="10" value="4">
+          </div>
+          
+          <div class="form-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="soundEnabled" checked>
+              <span>Enable Sound Notifications</span>
+            </label>
+          </div>
+          
+          <div class="form-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="autoStartNextTask" checked>
+              <span>Auto-start Next Task</span>
+            </label>
+          </div>
+          
+          <button id="saveSettingsBtn" class="btn primary">
+            <span class="material-icons-round">save</span> Save Settings
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Custom notification element -->
+    <div id="notification" class="notification">
+      <span id="notificationIcon" class="material-icons-round">info</span>
+      <span id="notificationMessage"></span>
+    </div>
+  </div>
+  
+  <!-- Audio files -->
+  <audio id="workCompleteSound" src="assets/sounds/work-complete.mp3"></audio>
+  <audio id="breakCompleteSound" src="assets/sounds/break-complete.mp3"></audio>
+  <audio id="buttonClickSound" src="assets/sounds/button-click.mp3"></audio>
+  
+  <script src="renderer.js" type="module"></script>
+</body>
+</html>

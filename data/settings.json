@@ -1,0 +1,8 @@
+{
+  "defaultWorkDuration": 25,
+  "breakDuration": 5,
+  "longBreakDuration": 15,
+  "longBreakInterval": 4,
+  "soundEnabled": true,
+  "autoStartNextTask": true
+}

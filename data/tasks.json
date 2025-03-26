@@ -1,0 +1,39 @@
+{
+  "date": "2025-03-23",
+  "startTime": "11:30",
+  "tasks": [
+    {
+      "name": "press church shirts",
+      "duration": 50,
+      "completed": false,
+      "startTime": "11:30",
+      "endTime": "12:20",
+      "priority": "medium"
+    },
+    {
+      "name": "dudu mockup",
+      "duration": 15,
+      "completed": false,
+      "startTime": "12:25",
+      "endTime": "12:40",
+      "priority": "medium"
+    },
+    {
+      "name": "press dudu shirts",
+      "duration": 20,
+      "completed": false,
+      "startTime": "12:45",
+      "endTime": "13:05",
+      "priority": "medium"
+    },
+    {
+      "name": "eat something",
+      "duration": 20,
+      "completed": false,
+      "startTime": "13:10",
+      "endTime": "13:30",
+      "priority": "medium"
+    }
+  ],
+  "currentTaskIndex": 0
+}

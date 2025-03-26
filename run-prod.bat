@@ -1,0 +1,3 @@
+@echo off
+echo Starting Pomodoro Timer production version...
+start dist\pomodoro-timer-win32-x64\pomodoro-timer.exe

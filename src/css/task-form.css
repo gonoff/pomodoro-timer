@@ -1,0 +1,140 @@
+/* Task Form Styles */
+
+.schedule-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* Task Form */
+.task-form-container {
+  margin-bottom: 20px;
+  background-color: var(--card);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.start-time-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.start-time-container label {
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.start-time-container input[type="time"] {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 2px solid var(--border);
+  background-color: var(--surface);
+  color: var(--text-primary);
+  font-family: 'Poppins', sans-serif;
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.task-name-group {
+  flex-grow: 3;
+  min-width: 200px;
+}
+
+.task-duration-group, .task-priority-group {
+  flex-grow: 1;
+  min-width: 100px;
+}
+
+.task-form input[type="text"],
+.task-form input[type="number"],
+.task-form select {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 2px solid var(--border);
+  background-color: var(--surface);
+  color: var(--text-primary);
+  font-family: 'Poppins', sans-serif;
+  transition: all var(--transition-normal) ease;
+}
+
+.task-form input:focus,
+.task-form select:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(29, 185, 84, 0.2);
+}
+
+.task-form select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23B3B3B3'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 20px;
+  padding-right: 35px;
+}
+
+/* Task actions in list */
+.task-actions {
+  display: flex;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.task-action-btn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 4px;
+  transition: all var(--transition-fast) ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.task-action-btn:hover {
+  color: var(--text-primary);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.task-action-btn span {
+  font-size: 18px;
+}
+
+.task-edit-btn:hover {
+  color: var(--secondary);
+}
+
+.task-delete-btn:hover {
+  color: var(--error);
+}
+
+.task-move-btn:hover {
+  color: var(--primary);
+}
+
+/* Make task items more interactive */
+.task-item {
+  position: relative;
+  transition: all var(--transition-normal) ease;
+}
+
+.task-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
